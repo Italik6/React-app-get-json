@@ -1,26 +1,32 @@
 import React from 'react';
+import { Button } from './Button'
 
-export default function User(props){
-    return(
-        <tr>
-            <td>{props.id}</td>
-            <td>{props.name}</td>
-            <td>{props.username}</td>
-            <td>{props.email}</td>
-            <td>
-                <p>{props.address.street}</p>
-                <p>{props.address.suite}</p>
-                <p>{props.address.city}</p>
-                <p>{props.address.zipcode}</p>
-            </td>
-            <td>{props.phone}</td>
-            <td>{props.website}</td>
-            <td>
-                <p>{props.company.name}</p>
-                <p>{props.company.catchPhrase}</p>
-                <p>{props.company.bs}</p>
-            </td>
-            <button className='btn btn-raised warning' onClick={x=>props.onDelete(props.id)}>Delete</button>
-        </tr>
-    );
+export class User extends React.Component{
+    render(){
+        let p = this.props;
+        return(
+            <tr>
+                <td>{p.id}</td>
+                <td>{p.name}</td>
+                <td>{p.username}</td>
+                <td>{p.email}</td>
+                <td>
+                    <p>{p.address.street}</p>
+                    <p>{p.address.suite}</p>
+                    <p>{p.address.city}</p>
+                    <p>{p.address.zipcode}</p>
+                </td>
+                <td>{p.phone}</td>
+                <td>{p.website}</td>
+                <td>
+                    <p>{p.company.name}</p>
+                    <p>{p.company.catchPhrase}</p>
+                    <p>{p.company.bs}</p>
+                </td>
+                <td>
+                    <Button onClick={x => p.onDelete(p.id)} />
+                </td>
+            </tr>
+        );
+    }
 }
